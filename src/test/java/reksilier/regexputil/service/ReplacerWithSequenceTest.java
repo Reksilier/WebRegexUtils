@@ -11,9 +11,8 @@ import static org.junit.Assert.assertEquals;
 @RunWith(JUnit4.class)
 public class ReplacerWithSequenceTest {
 	
-	private RegexpReplacerService testSubject = new RegexpReplacerService();
-	
 	private static final String DEFAULT_REPLACING_PART = "REPLACE";
+	private RegexpReplacerService testSubject = new RegexpReplacerService();
 	private ReplacementResolver defaultReplacementResolver = new NextNumberReplacementResolver();
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -41,7 +40,6 @@ public class ReplacerWithSequenceTest {
 		assertEquals("", testSubject.replaceSubStringsInText("", DEFAULT_REPLACING_PART, defaultReplacementResolver));
 	}
 	
-	
 	@Test
 	public void keepOriginalTextWhenEmptyReplacingPart() {
 		assertEquals("text", testSubject.replaceSubStringsInText("text", "", defaultReplacementResolver));
@@ -51,7 +49,7 @@ public class ReplacerWithSequenceTest {
 	public void replaceSubStringWithNumber() {
 		assertEquals("text1text", testSubject.replaceSubStringsInText("textREPLACEtext", DEFAULT_REPLACING_PART, defaultReplacementResolver));
 	}
-
+	
 	@Test
 	public void replaceTwoSubStringsWithNumbers() {
 		assertEquals("text1text2", testSubject.replaceSubStringsInText("textREPLACEtextREPLACE", DEFAULT_REPLACING_PART, defaultReplacementResolver));
